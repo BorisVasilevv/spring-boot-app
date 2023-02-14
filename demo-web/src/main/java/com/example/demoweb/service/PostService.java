@@ -4,23 +4,22 @@ import com.example.demoweb.model.Post;
 import org.springframework.stereotype.*;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class PostService {
-    public List<Post> listAllPosts(){
-        Post p1=new Post("Купил мужик шляпу", new Date(2023, 02,14));
-        Post p2 =new Post("А она ему...", new Date(2023, 02,14));
-        Random random=new Random();
-        String result = random.nextInt()%2==0
-                ? "Как раз"
-                : "Не подошла";
-        Post p3= new Post(result, new Date(2023, 02,14));
-        return Arrays.asList(p1,p2,p3);
+    private ArrayList<Post> posts= new ArrayList<>(
+            Arrays.asList(new Post("Купил мужик шляпу", new Date(2023, 1,14,12,32,45)),
+                    new Post("А она ему...", new Date(2023, 1,14,12,56,45)),
+                            new Post("Как раз", new Date(2023, 1,14,13,32,45))
+    ));
+    public ArrayList<Post> listAllPosts(){
+
+        return posts;
     }
 
+    public void create(String text) {
+        posts.add(new Post(text, new Date()));
+    }
 
 }
