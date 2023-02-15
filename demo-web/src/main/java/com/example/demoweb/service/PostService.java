@@ -8,18 +8,19 @@ import java.util.*;
 
 @Service
 public class PostService {
-    private ArrayList<Post> posts= new ArrayList<>(
-            Arrays.asList(new Post("Купил мужик шляпу", new Date(2023, 1,14,12,32,45)),
-                    new Post("А она ему...", new Date(2023, 1,14,12,56,45)),
-                            new Post("Как раз", new Date(2023, 1,14,13,32,45))
-    ));
-    public ArrayList<Post> listAllPosts(){
+    private List<Post> posts= Arrays.asList(
+            new Post(0l,"Купил мужик шляпу", new Date(2023, 1,14,12,32,45)),
+            new Post(1l,"А она ему...", new Date(2023, 1,14,12,56,45)),
+            new Post(2l,"Как раз", new Date(2023, 1,14,13,32,45))
+    );
+    public List<Post> listAllPosts(){
 
         return posts;
     }
 
     public void create(String text) {
-        posts.add(new Post(text, new Date()));
+        Long count= posts.stream().count();
+        posts.add(new Post(count,text, new Date()));
     }
 
 }
