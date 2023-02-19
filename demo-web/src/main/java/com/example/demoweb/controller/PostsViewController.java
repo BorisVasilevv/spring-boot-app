@@ -14,7 +14,7 @@ public class PostsViewController {
     PostService postsService;
     @ResponseBody
     @RequestMapping(path = "/hereWillBeADragons", method = RequestMethod.GET)
-    public String list() {
+    public String list1() {
         return "Здесь будут драконы";
     }
 
